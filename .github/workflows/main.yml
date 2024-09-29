@@ -21,13 +21,14 @@ jobs:
         with:
           python-version: '3.8'
 
-      - name: Kernel Configure
+      - name: Yevhenii Nethunter Kernel v1.0
         run: |
           set -e -o pipefail
           ./cruelbuild config                    \
                        model=${{ matrix.model }} \
                        name="Cruel-v4.2"         \
                        toolchain=$TOOLCHAIN      \
+                       -magisk                   \
                        +nohardening              \
                        +ttl                      \
                        +wireguard                \
@@ -53,7 +54,7 @@ jobs:
         if: env.TOOLCHAIN != 'system-gcc' && env.TOOLCHAIN != 'system-clang'
         run: git clone --depth 1 -j $(nproc) --branch $TOOLCHAIN --single-branch https://github.com/CruelKernel/samsung-exynos9820-toolchain toolchain
 
-      - name: Yevhenii Nethunter Kernel v1.0
+      - name: Kernel Build
         run: ./cruelbuild :build
 
       - name: Install mkbootimg
