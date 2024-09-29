@@ -54,7 +54,7 @@ jobs:
         if: env.TOOLCHAIN != 'system-gcc' && env.TOOLCHAIN != 'system-clang'
         run: git clone --depth 1 -j $(nproc) --branch $TOOLCHAIN --single-branch https://github.com/CruelKernel/samsung-exynos9820-toolchain toolchain
 
-      - name: Kernel Build
+      - name: Yevhenii Nethunter Kernel v1.0
         run: ./cruelbuild :build
 
       - name: Install mkbootimg
